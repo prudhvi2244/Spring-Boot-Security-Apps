@@ -1,5 +1,7 @@
 package com.raj.in.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,6 +67,12 @@ public class UserController {
 		String token=jutil.generateToken(urequest.getUsername());
 		String issuer="Token Issued By :"+jutil.tokenIssuer(token);
 		return new ResponseEntity<UserResponse>(new UserResponse(token,issuer),HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/welcome")
+	public  ResponseEntity<String> welcome()
+	{
+		return new ResponseEntity<String>("Welcome User:",HttpStatus.OK);
 	}
 	
 

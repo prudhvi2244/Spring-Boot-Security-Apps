@@ -34,7 +34,7 @@ public class JwtUtil {
 	public boolean isTokenExpired(String token)
 	{
 		Date tokenExpDT=getClaims(token).getExpiration();
-		return tokenExpDT.before(new Date(System.currentTimeMillis()));
+		return tokenExpDT.after(new Date(System.currentTimeMillis()));
 	}
 	
 	//4 . Read Subject/Username from token
